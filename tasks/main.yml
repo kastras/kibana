@@ -3,4 +3,4 @@
   when: ansible_distribution == "Fedora" or ansible_distribution == "CentOS"
 
 - name: iniciamos y habilitamos el servicio httpd
-  service: name=elasticsearch state=started enabled=true
+  service: name=kibana state=started enabled=true
