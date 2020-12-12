@@ -1,7 +1,0 @@
----
-- name: playbook para instalar kibana y elasticsearch
-  hosts: all
-  become: true
-  roles:
-    - elasticsearch
-    - kibana

@@ -1,6 +1,0 @@
----
- ansible_user: vagrant
- host_key_checking: False
-# ANSIBLE_HOST_KEY_CHECKING: False
-# ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
- ansible_ssh_common_args: "-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
