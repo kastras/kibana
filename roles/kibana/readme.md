@@ -1,3 +1,6 @@
 En este playbook estan las variables obligatorias
-IpElasticsearch
-IpKibana
+PuertoKibana:
+IpKibana:
+NombreKibana:
+IpServicioElasticsearch:
+PuertoServicioElasticsearch:
