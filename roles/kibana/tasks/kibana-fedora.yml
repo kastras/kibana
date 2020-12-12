@@ -1,0 +1,45 @@
+- name: Importamos la key del repositorio a través de url
+  rpm_key:
+    state: present
+    key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+
+- name: Añadimos el repositorio de kibana
+  yum_repository:
+    name: kibana-7.x
+    description: KIBANA repo
+    file: kibana
+    baseurl: https://artifacts.elastic.co/packages/7.x/yum
+    gpgcheck: yes
+    gpgkey: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    enabled: yes
+
+- name: Instalamos el kibana
+  yum: name=kibana state=latest
+
+- name: Instalamos chkconfig
+  yum: name=chkconfig state=latest
+
+- name: Indicamos el puerto del kibana
+  lineinfile:
+    path: /etc/kibana/kibana.yml
+    regexp: 'server.port:'
+    line: 'server.port: {{ PuertoKibana }}'
+
+- name: Indicamos la ip del kibana
+  lineinfile:
+    path: /etc/kibana/kibana.yml
+    regexp: 'server.host:'
+    line: 'server.host: {{ IpKibana }}'
+
+- name: Indicamos el nombre del kibana
+  lineinfile:
+    path: /etc/kibana/kibana.yml
+    regexp: 'server.name:'
+    line: 'server.name: {{ NombreKibana }}'
+
+- name: Indicamos la direccion del elasticsearch
+  lineinfile:
+    path: /etc/kibana/kibana.yml
+    regexp: 'elasticsearch.hosts:'
+    line: 'elasticsearch.hosts: ["http://{{ IpServicioElasticsearch }}: {{ PuertoServicioElasticsearch }}"]'

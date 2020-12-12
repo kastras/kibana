@@ -1,0 +1,5 @@
+PuertoKibana: 5601
+IpKibana: 127.0.0.1
+NombreKibana: your-hostname
+IpServicioElasticsearch: 127.0.0.1
+PuertoServicioElasticsearch: 9200
