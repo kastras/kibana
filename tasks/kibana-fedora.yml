@@ -43,3 +43,14 @@
     path: /etc/kibana/kibana.yml
     regexp: 'elasticsearch.hosts:'
     line: 'elasticsearch.hosts: ["http://{{ IpServicioElasticsearch }}: {{ PuertoServicioElasticsearch }}"]'
+
+- name: Creamos el servicio de kibana para firewalcmd
+      template:
+        src: kibana.j2
+        dest: /etc/firewalld/services/kibana.xml
+
+- firewalld:
+    service: kibana
+    permanent: true
+    immediate: true
+    state: enabled
